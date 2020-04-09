@@ -14,9 +14,6 @@ class _ListDataState extends State<ListData> {
     Quote(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',author: 'Barry White'),
     Quote(text: 'Integer sollicitudin purus ac vestibulum luctus.' ,author: 'Snow White'),
     Quote(text: 'Pellentesque vel nunc id purus iaculis molestie.' ,author: 'Evil Queen'),
-    Quote(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',author: 'Barry White'),
-    Quote(text: 'Integer sollicitudin purus ac vestibulum luctus.' ,author: 'Snow White'),
-    Quote(text: 'Pellentesque vel nunc id purus iaculis molestie.' ,author: 'Evil Queen'),
   ];
 
   @override
@@ -30,7 +27,14 @@ class _ListDataState extends State<ListData> {
       backgroundColor: Colors.grey[200],
       body: Column(
         children: quotes.map((quote){
-          return QuoteCard(quote: quote,);
+          return QuoteCard(
+            quote: quote,
+            onDelete: (){
+              setState(() {
+                quotes.remove(quote);
+              });
+            },
+          );
         }).toList(),
       ),
     );
